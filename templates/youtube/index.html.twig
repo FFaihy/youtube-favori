@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Vidéos Youtube{% endblock %}
+
+{% block body %}
+    <div style="margin-top: 3%">
+        <h2>Ajouter une vidéo</h2>
+
+<div style="margin-bottom: 5%" >
+    {{ form(formYoutube) }}
+</div>
+    </div>
+
+
+<div class="row">
+    {% for youtube in youtubes %}
+        <div class="col">
+        <div class="card" style="width: 18rem;margin-bottom: 10%">
+            <a href="{{ path('app_video',{'id':youtube.id}) }}"> <img src="{{ youtube.url | youtube_thumbnail }}" class="card-img-top"> </a>
+            <div class="card-body">
+                <p class="card-title">{{ youtube.nom }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
